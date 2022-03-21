@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Ghost Project Homepage{% endblock %}
+
+{% block body %}
+  <h1>Welcome to Ghost Project!</h1>
+
+  <h2>Navigation</h2>
+  <ul>
+    <li><a href="/locations">View all locations</a></li>
+    <li><a href="/user/:profile">View user profile</a></li>
+  </ul>
+
+  <!-- <h3>Please log in to continue to profile</h1>
+
+<form action="/login" method="post">
+  <div class="container">
+    <label for="fname"><b>Firstname</b></label>
+    <input type="text" placeholder="Enter First Name" name="first_name" id="first_name" required>
+
+    <label for="lname"><b>Lastname</b></label>
+    <input type="text" placeholder="Enter Last Name" name="last_name" id="last_name" required>
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" id="password" required>
+
+    <button type="submit">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div> -->
+  {% endblock %}

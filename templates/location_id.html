@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ location.name }} - Details{% endblock %}
+
+{% block body %}
+
+<h1>{{ location.name }}</h1>
+
+<p>
+  {{ location.city }} {{ location.state }}
+</p>
+
+<p>
+  {{ location.description }}
+</p>
+
+{% endblock %}
+

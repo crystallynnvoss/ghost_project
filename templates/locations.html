@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Ghost Project Locations{% endblock %}
+
+{% block body %}
+  <h1>Ghost project - All Locations</h1>
+  <input placeholder="Search for a haunted location" id="search" />
+  <ul>
+    {% for location in locations %}
+      <li>
+        <a href="/location/{{ location.id }}">{{ location.name }}</a> 
+        {{ location.description}}
+      </li>
+    {% endfor %}
+  </ul>
+
+  <script>
+    document.getElementById('search').addEventListener('keypress', function(event){
+      console.log(event);
+      
+    })
+    </script>
+
+{% endblock %}
+

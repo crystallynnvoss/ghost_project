@@ -2,29 +2,29 @@
 {% block title %}Ghost Project Homepage{% endblock %}
 
 {% block body %}
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for msg in messages %}
+        <p>{{msg}}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
   <h1>Welcome to Ghost Project!</h1>
+  <p>
+    <a href="/locations">View all locations</a></li>
+  </p>
+  <h2>Please log in to continue to profile</h2>
 
-  <h2>Navigation</h2>
-  <ul>
-    <li><a href="/locations">View all locations</a></li>
-    <li><a href="/user/:profile">View user profile</a></li>
-  </ul>
-
-  <!-- <h3>Please log in to continue to profile</h1>
-
-<form action="/login" method="post">
+<form action="/" method="post">
   <div class="container">
-    <label for="fname"><b>Firstname</b></label>
-    <input type="text" placeholder="Enter First Name" name="first_name" id="first_name" required>
-
-    <label for="lname"><b>Lastname</b></label>
-    <input type="text" placeholder="Enter Last Name" name="last_name" id="last_name" required>
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter email" name="email" id="email" required><br>
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" id="password" required>
+    <input type="password" placeholder="Enter Password" name="password" id="password" required><br>
 
     <button type="submit">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
-  </div> -->
+  </div> 
+
+<h3>Click below for registration</h3>
+<p><a href="/registration">Register</a></p>
   {% endblock %}

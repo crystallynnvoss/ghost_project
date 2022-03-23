@@ -3,12 +3,13 @@
 
 {% block body %}
   <h1>Ghost project - All Locations</h1>
-  <input placeholder="Search for a haunted location" id="search" />
+  <input placeholder="Search locations" id="search" />
   <ul>
     {% for location in locations %}
       <li>
         <a href="/location/{{ location.id }}">{{ location.name }}</a> 
-        {{ location.description}}
+        <span>{{ location.city }},</span> {{ location.state }}<br>     
+        {{ location.description}} 
       </li>
     {% endfor %}
   </ul>
@@ -18,7 +19,7 @@
       console.log(event);
       
     })
-    </script>
+    </script> 
 
 {% endblock %}
 

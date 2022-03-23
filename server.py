@@ -5,11 +5,11 @@ from models import (Users,Contacts,Favorites,Location,Comments,db,connect_to_db)
 from jinja2 import StrictUndefined
 
 app = Flask(__name__)
-app.secret_key = 'ghostsecrets'
+app.secret_key = "ghostsecrets"
 app.jinja_env.undefined = StrictUndefined
 
 
-@app.route('/registration', methods=["POST", "GET"])
+@app.route("/registration", methods=["POST", "GET"])
 def registration():
     """Register a user"""
     user = None
@@ -20,67 +20,89 @@ def registration():
         city = request.form["city"]
         state = request.form["state"]
         zipcode = request.form["zipcode"]
+        email = request.form["email"]
         user = Users(first_name=first_name, last_name=last_name, password=password,
-        city=city, state=state, zipcode=zipcode) 
+        city=city, state=state, zipcode=zipcode, email=email) 
 
         db.session.add(user)
         db.session.commit()
         
-        email = request.form["email"]
         website = request.form["website"]
         social_media_link = request.form["social_media_link"]
-        contacts = Contacts(email=email, website=website, social_media_link= social_media_link)
+        contacts = Contacts(website=website, social_media_link= social_media_link)
         user.contacts = contacts
         
         db.session.add(contacts)
         db.session.commit()
-        db.session.flush()
-        print(user.id)
-        session["user_id"] =  user.id
-        return redirect('/dashboard')
+        
+        # session["user_id"] =  user.id #Store user in session 
+        # db.session.flush() 
+        
+        return redirect("/")
             
     else:
         user = Users()
         contacts = Contacts()
         user.contacts = contacts    
-    return render_template('user_registration.html', user=user)
+    return render_template("user_registration.html", user=user)
 
-@app.route('/dashboard') #, methods=["POST", "GET"])
-def dashboard():
-    print(session)
+@app.route("/user_profile") 
+def profile():
+    """User profile page""" 
     user = Users.query.get(session["user_id"])
+    return render_template("user_profile.html", user=user)
 
-    return f"Your daskboard goes here! Logged in User is {session['user_id']} <br> Name is {user.first_name}"
-
-
-@app.route('/') #, methods=["POST", "GET"])
-def homepage():
-    """Show homepage."""
+   #get info from url?
+    #create favorite 
+    #db commit and save
     
-    return render_template('homepage.html')
-#     if request.method == "POST": 
-#         fname = request.form["first_name"] 
-#         lname = request.form["last_name"] 
-#         password = request.form["password"]
-        
-#         if Users.query.filter_by(first_name= fname) == 
-#          last_name= lname, password= password) == :
-#             return redirect ("/user_profile.html")
+
+    
+
+@app.route("/", methods=["POST", "GET"])  
+def homepage_login():
+    """Show homepage and log in user."""
+    email = request.form.get("email")
+    password = request.form.get("password")
+    
+    if request.method == "POST": 
+        try: 
+            user = Users.query.filter(Users.email == email).one()
+        except: 
+            flash("The email entered is not registered, please register to continue")
+            return redirect("/")
+        if user.password != password or user.email != email: 
+            flash("The email or password you entered was incorrect.")
+        else:
+            session["user_email"] = user.email
+            return redirect("/user_profile")
+
+    return render_template("homepage.html")
+    
+#show homepage. if registered, log in will take you to profile page, if not, click here to register
+   
+
+   
+
+
+
+
+#        
     
 #     else:
 #        return render_template('homepage.html')
-@app.route('/search')
-def search():
+# @app.route('/search')
+# def search():
     #get locations
     #lookup post or get params that's value of input
     #search locations object with value probably with *wildcards
     #return JSON
-    pass
+    
 
 @app.route('/locations')
 def show_locations():
     """Show list of locations."""
-    locations = Location.query.all()[0:10]
+    locations = Location.query.order_by("name")[0:100]
     
     return render_template('locations.html',locations= locations)
 
@@ -93,12 +115,6 @@ def get_location_by_id(id):
     return render_template("location_id.html", location=location)
     
 
-# @app.route('/user/:profile')
-# def something_else():
-#     """Show single user profile."""
- 
-    
-#     return render_template("")
 
 if __name__ == "__main__":
     app.debug = True

@@ -4,7 +4,12 @@
 
 {% block body %}
 
-<h1>{{ location.name }}</h1>
+  
+<h1>{{ location.name }}</h1> <span>
+  <form action="/user_profile">
+    <button id="favorites" name="favorite" value="{{ location.id }}">Add to Favorites</button>
+  </form>
+</span>
 
 <p>
   {{ location.city }} {{ location.state }}
@@ -13,6 +18,13 @@
 <p>
   {{ location.description }}
 </p>
-
+<script>
+  const favButton = document.getElementById("favorites");
+  
+  favButton.addEventListener('click', function(event){
+      console.log(event);
+      
+    })
+</script>
 {% endblock %}
 

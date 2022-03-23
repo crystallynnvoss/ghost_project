@@ -24,7 +24,7 @@ class Location(db.Model):
     __tablename__ = "location"
     
     id = db.Column(db.Integer, primary_key = True, autoincrement=True)
-    name = db.Column(db.String(512), nullable = False)
+    name = db.Column(db.Text(), nullable = False)
     description = db.Column(db.Text())
     city = db.Column(db.String(254), nullable = False)
     state = db.Column(db.String(50), nullable = False)
@@ -48,6 +48,7 @@ class Users(db.Model):
     city = db.Column(db.String(50), nullable = False)
     state = db.Column(db.String(25), nullable = False)
     zipcode = db.Column(db.Integer, nullable = False)
+    email = db.Column(db.String(100), nullable = False, unique = True)
     
     contacts = db.relationship("Contacts", uselist=False, back_populates= "users")
     comments = db.relationship("Comments", back_populates="users")
@@ -63,7 +64,6 @@ class Contacts(db.Model):
     
     id = db.Column(db.Integer, primary_key = True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    email = db.Column(db.String(100))
     website = db.Column(db.String(100))
     social_media_link = db.Column(db.String(100))
     
@@ -108,6 +108,6 @@ if __name__ == "__main__":
     
     app = Flask(__name__)
     connect_to_db(app)  
-    #db.create_all()
+    db.create_all()
     
     

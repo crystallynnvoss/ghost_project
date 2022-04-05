@@ -1,6 +1,7 @@
 from datetime import datetime
 from flask import Flask 
 from flask_sqlalchemy import SQLAlchemy
+from dataclasses import dataclass
 
 db = SQLAlchemy()
 
@@ -18,9 +19,16 @@ def connect_to_db(flask_app, db_uri="", echo=True):
 #create classes that represet tables in the database
 #class will have attributes that represent the table 
 #establish relationships between tables
+@dataclass #use to make it possible to return as json 
 class Location(db.Model): 
     """Create db table for haunted location information"""
-  
+    name:str
+    description:str
+    state:str
+    id:int
+    city_longitude:float
+    city_latitude:float
+    
     __tablename__ = "location"
     
     id = db.Column(db.Integer, primary_key = True, autoincrement=True)
@@ -44,7 +52,7 @@ class Users(db.Model):
     id = db.Column(db.Integer, primary_key = True, autoincrement=True)
     first_name = db.Column(db.String(50), nullable = False)
     last_name = db.Column(db.String(50), nullable = False)
-    password = db.Column(db.String(50), nullable = False)
+    password = db.Column(db.String(255), nullable = False)
     city = db.Column(db.String(50), nullable = False)
     state = db.Column(db.String(25), nullable = False)
     zipcode = db.Column(db.Integer, nullable = False)
@@ -70,7 +78,7 @@ class Contacts(db.Model):
     users = db.relationship("Users", uselist=False, back_populates= "contacts")
 
     def __repr__(self):
-        return f'<Contacts contact_info={self.user_id, self.email}>'
+        return f'<Contacts contact_info={self.user_id, self.website, self.social_media_link}>'
 
 class Favorites(db.Model): 
     """Create db table"""

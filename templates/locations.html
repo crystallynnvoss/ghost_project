@@ -3,23 +3,28 @@
 
 {% block body %}
   <h1>Ghost project - All Locations</h1>
-  <input placeholder="Search locations" id="search" />
-  <ul>
+  <input id= "search_term" placeholder="Keyword Search" /><button id="search">search</button>
+   
+  <ul id="locations">
     {% for location in locations %}
       <li>
         <a href="/location/{{ location.id }}">{{ location.name }}</a> 
         <span>{{ location.city }},</span> {{ location.state }}<br>     
-        {{ location.description}} 
       </li>
     {% endfor %}
-  </ul>
+  </ul> 
+  </p>
+  
+  <h2>Search haunted map by city or state</h2>
+  <input id= "map_search" placeholder="City/State Search" /><button id="map_search_button">search</button>
+  
+  <div id='map' style='width: 400px; height: 300px;'></div>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' /> 
+  <script src="/static/main.js"></script>
+  {% endblock %}
 
-  <script>
-    document.getElementById('search').addEventListener('keypress', function(event){
-      console.log(event);
-      
-    })
-    </script> 
+  
+ 
 
-{% endblock %}
-
+ 

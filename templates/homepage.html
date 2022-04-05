@@ -11,20 +11,36 @@
     {% endwith %}
   <h1>Welcome to Ghost Project!</h1>
   <p>
-    <a href="/locations">View all locations</a></li>
+    <a href="/locations">View all locations</a>
   </p>
-  <h2>Please log in to continue to profile</h2>
 
-<form action="/" method="post">
-  <div class="container">
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter email" name="email" id="email" required><br>
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" id="password" required><br>
+  {% if not user %}
 
-    <button type="submit">Login</button>
-  </div> 
+    <h2>Please log in to continue</h2>
 
-<h3>Click below for registration</h3>
-<p><a href="/registration">Register</a></p>
-  {% endblock %}
+    <form action="/" method="post">
+      <div class="container">
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter email" name="email" id="email" required><br>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" id="password" required><br>
+
+        <button type="submit">Login</button>
+      </div> 
+    </form>
+
+    <h3>Click below to register</h3>
+    <p><a href="/registration">Register</a></p>
+  {% else %}
+  
+    <h3>Welcome to Ghost Project {{user.email}}</h3>
+    <h4><a href="/logout">Logout... or the ghosts will follow you home</a></h4>
+    <br /><br /><br /><br />
+
+    <p>
+      <a href="/user_profile">View profile page</a>
+    </p>
+
+  {% endif %}
+
+{% endblock %}

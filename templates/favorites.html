@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Your favorite Spooky Locations{% endblock %}
+
+{% block body %}
+  <h1>Ghost project - Favorite Spooky Locations</h1>
+  <ul>
+    {% for favorite in favorites %}
+      <li>
+        {{ favorite.location.name }}
+        <span>{{ favorite.location.city }},</span> {{ favorite.location.state }}<br>     
+        {{ favorite.location.description}} 
+      </li>
+    {% endfor %}
+  </ul>
+
+
+{% endblock %}
+

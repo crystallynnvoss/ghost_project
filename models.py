@@ -26,8 +26,8 @@ class Location(db.Model):
     description:str
     state:str
     id:int
-    city_longitude:float
-    city_latitude:float
+    longitude:float
+    latitude:float
     
     __tablename__ = "location"
     
@@ -36,8 +36,8 @@ class Location(db.Model):
     description = db.Column(db.Text())
     city = db.Column(db.String(254), nullable = False)
     state = db.Column(db.String(50), nullable = False)
-    city_longitude = db.Column(db.Float())
-    city_latitude = db.Column(db.Float())    
+    longitude = db.Column(db.Float())
+    latitude = db.Column(db.Float())    
     favorites = db.relationship("Favorites", back_populates="location")
     comments = db.relationship("Comments", back_populates="location")
     

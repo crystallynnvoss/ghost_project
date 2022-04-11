@@ -14,7 +14,9 @@
 <h1>{{ location.name }}</h1> <span>
   {% if user %}
   <form action="/favorites">
-    <button id="favorites" name="favorite" value="{{ location.id }}">Add to Favorites</button>
+    
+    <input type="hidden" name="favorite" value="{{ location.id }}"/>
+    <button>Add to Favorites</button>
   </form>
   {% endif %}
 </span>
@@ -28,7 +30,7 @@
 <h4>Comments</h4>
 <form class="" action="/comment_submit" method="POST">
   <textarea placeholder="add comment here" name="user_comments"></textarea>
-  <input type="hidden" value="{{location.id}}" name="id" />
+  <input type="hidden" name="id" value="{{location.id}}"/> <!-- in order to get information to server without being seen by user use hidden-->
   <button>Submit</button>
 </form>
 
@@ -37,7 +39,7 @@
     {{comment.user_comments}} by {{comment.users.email}}
   {% endfor %} 
 </div>
-<img src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/{{location.city_longitude}},{{location.city_latitude}},10/400x400?access_token=pk.eyJ1IjoiZmlzaGVyMzQ3NCIsImEiOiJjbDFkcmQxNXMwazhpM21wNnNieTg4NWVqIn0.dmCThKx2-AVbtgD0bu3Pfw" />
+<img src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/{{location.longitude}},{{location.latitude}},10/400x400?access_token=pk.eyJ1IjoiZmlzaGVyMzQ3NCIsImEiOiJjbDFkcmQxNXMwazhpM21wNnNieTg4NWVqIn0.dmCThKx2-AVbtgD0bu3Pfw" />
 
 
 

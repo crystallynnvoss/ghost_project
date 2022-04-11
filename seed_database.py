@@ -6,16 +6,16 @@ from flask import Flask
 app = Flask(__name__)
 models.connect_to_db(app)  
 
-with open("haunted_places_2.csv", "r" ) as csv_file:
+with open("haunted_places_3.csv", "r" ) as csv_file:
     reader = csv.DictReader(csv_file, delimiter=",")
     for line in reader:
-        if line["location"] and line["city"] and line["description"] and line["state"] and line["city_longitude"] and line["city_latitude"]:
+        if line["location"] and line["city"] and line["description"] and line["state"] and line["longitude"] and line["latitude"]:
             location = models.Location(name=line["location"],
                 description=line["description"],
                 city = line["city"],
                 state = line["state"],
-                city_longitude = line["city_longitude"],
-                city_latitude = line["city_latitude"]
+                longitude = line["longitude"],
+                latitude = line["latitude"]
             )
 
             models.db.session.add(location)

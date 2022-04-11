@@ -90,7 +90,7 @@ def homepage_login():
 @app.route('/locations')
 def show_locations():
     """Show list of locations."""
-    locations = Location.query.order_by("name")[0:100]
+    locations = Location.query.order_by("name")
     
     return render_template('locations.html',locations= locations)
 

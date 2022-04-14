@@ -2,17 +2,36 @@
 {% block title %}Your favorite Spooky Locations{% endblock %}
 
 {% block body %}
-  <h1>Ghost project - Favorite Spooky Locations</h1>
+<div class="text-center">
+  <div id="favoritesbackground">  
+<h1>Ghost Project - Favorite Spooky Locations</h1>
+<div class="row favorites">
+  <div class="col-md-12 border-right">
+      <div class="d-flex flex-column align-items-center text-center p-3 py-5">
   <ul>
     {% for favorite in favorites %}
-      <li>
-        {{ favorite.location.name }}
-        <span>{{ favorite.location.city }},</span> {{ favorite.location.state }}<br>     
-        {{ favorite.location.description}} 
+      <li class="my-2">
+        <a href="/location/{{ favorite.location.id }}">{{ favorite.location.name }}
+        <span>{{ favorite.location.city }},</span> {{ favorite.location.state }}</a>
       </li>
     {% endfor %}
   </ul>
+  </div>
+</div>  
 
-
+<div class="row">
+  <div class="col-md-12 border-right">
+      <div class="d-flex flex-column align-items-center text-center p-3 py-5 ">
+          
+          
+          <div class ="profile-links mb-3">
+              <a href="/user_profile">Return to Profile</a> 
+          </div>
+          <div class ="profile-links mb-3">
+              <a href="/locations">Link to Locations</a>
+          </div>
+      </div>
+  </div>
+</div> 
 {% endblock %}
 

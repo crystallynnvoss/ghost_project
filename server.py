@@ -1,10 +1,10 @@
-from flask_debugtoolbar import DebugToolbarExtension
+# from flask_debugtoolbar import DebugToolbarExtension
 from flask import (Flask, render_template, request, flash, session, jsonify, redirect, make_response)
 from models import (Users,Contacts,Favorites,Location,Comments,db,connect_to_db)
 import json
 from passlib.hash import argon2
 
-# import crud
+
 from jinja2 import StrictUndefined
 
 app = Flask(__name__)
@@ -42,8 +42,6 @@ def registration():
         db.session.add(contacts)
         db.session.commit()
         
-        # session["user_id"] =  user.id #Store user in session 
-        # db.session.flush() 
         
         return redirect("/")
             
@@ -92,7 +90,7 @@ def show_locations():
     """Show list of locations."""
     locations = Location.query.order_by("name")
     
-    return render_template('locations.html',locations= locations)
+    return render_template('locations.html',locations= locations[:20])
 
 @app.route('/search')
 def search():
@@ -148,7 +146,7 @@ if __name__ == "__main__":
 
 
 
-    # Use the DebugToolbar
-    #DebugToolbarExtension(app)
+   
+    # DebugToolbarExtension(app)
     connect_to_db(app)  
     app.run(host="0.0.0.0")

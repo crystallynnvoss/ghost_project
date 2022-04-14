@@ -2,27 +2,31 @@
 {% block title %}Ghost Project Locations{% endblock %}
 
 {% block body %}
-  <h1>Ghost project - All Locations</h1>
-  <input id= "search_term" placeholder="Keyword Search" /><button id="search">search</button>
-   
-  <ul id="locations">
-    {% for location in locations %}
-      <li>
-        <a href="/location/{{ location.id }}">{{ location.name }}</a> 
-        <span>{{ location.city }},</span> {{ location.state }}<br>     
-      </li>
-    {% endfor %}
-  </ul> 
-  </p>
-  
-  <h2>Search haunted map by city or state</h2>
-  <input id= "map_search" placeholder="City/State Search" /><button id="map_search_button">search</button>
-  
-  <div id='map' style='width: 400px; height: 300px;'></div>
-  <script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
-  <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' /> 
-  <script src="/static/main.js"></script>
-  {% endblock %}
+<div id="locationsbackground" name="haunted"></div>
+<div class="row">
+  <div class="col-md-6 col-sm-12">
+    <h1>Ghost project - All Locations</h1>
+      <input id= "search_term" placeholder="Keyword Search" /><button id="search">search</button>
+      
+      <ul id="locations">
+        {% for location in locations %}
+          <li class="locations-list">
+            <a href="/location/{{ location.id }}">{{ location.name }} - 
+            <span>{{ location.city }}, {{ location.state }}</span>     </a> 
+          </li>
+        {% endfor %}
+      </ul> 
+      </p>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <input class="mt-5" id= "map_search" placeholder="Search" /><button id="map_search_button">search</button>
+      <div id='map' style='width: 400px; height: 300px;'></div>
+      <script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
+      <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' /> 
+      <script src="/static/main.js"></script>
+  </div>
+</div>
+{% endblock %}
 
   
  

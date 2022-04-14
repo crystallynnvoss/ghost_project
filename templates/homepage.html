@@ -9,38 +9,55 @@
         {% endfor %}
       {% endif %}
     {% endwith %}
-  <h1>Welcome to Ghost Project!</h1>
-  <p>
-    <a href="/locations">View all locations</a>
-  </p>
-
+<div class="text-center">
+  <div id="homepagebackground" name="homepagebackground"></div>
+  
+  <h1 id="heading" class="text-center">Ghost Project</h1>
+  
   {% if not user %}
 
-    <h2>Please log in to continue</h2>
+    <h3>Please log in to continue</h3>
 
-    <form action="/" method="post">
-      <div class="container">
+    <form action="/" method="post" class="offset-md-3 mb-5 col-md-6 col-sm-12">
+      <div class="form-group">
+      
         <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter email" name="email" id="email" required><br>
+        <input class="form-control" type="text" placeholder="Enter email" name="email" id="email" required>
+      </div>
+      <div class="form-group">
         <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" id="password" required><br>
-
-        <button type="submit">Login</button>
-      </div> 
+        <input class="form-control" type="password" placeholder="Enter Password" name="password" id="password" required><br>
+      </div>
+      <button class="btn btn-primary" type="submit">Login</button>
+      
     </form>
 
     <h3>Click below to register</h3>
-    <p><a href="/registration">Register</a></p>
+    <a href="/registration" class="btn btn-primary">Register</a>
   {% else %}
-  
-    <h3>Welcome to Ghost Project {{user.email}}</h3>
-    <h4><a href="/logout">Logout... or the ghosts will follow you home</a></h4>
-    <br /><br /><br /><br />
-
-    <p>
-      <a href="/user_profile">View profile page</a>
-    </p>
+  <p>
+    <h3 class="name">Welcome Back,</h3>
+      <div id="name"><span>{{user.first_name}}</span></div>
+  </p>
+    <br>
+    <div class="absolutist">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/user_profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/locations">Locations</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/favorites">Favorites</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Log Out</a>
+        </li>
+      </ul>
+  </div>
+    
 
   {% endif %}
-
+</div> 
 {% endblock %}

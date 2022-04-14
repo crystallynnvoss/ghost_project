@@ -2,16 +2,26 @@
 {% block title %}Ghost Project Registration{% endblock %}
 
 {% block body %}
-{% block heading %}<h1>Ghost Hunter Profile Page</h1>{% endblock%}
-<form class="container rounded bg-white mt-5 mb-5" action="/registration" method="POST">
+{% block heading %}<h1 class="text-center">Ghost Hunter Profile Page</h1>{% endblock%}
+<form class="container rounded bg-slate mt-5 mb-1" action="/registration" method="POST">
     <div class="row">
         <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Ghost Hunter</span><span class="text-black-50"></span><span> </span></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 pt-1 hemley">
+                <img style="width:150px" class="rounded-circle mt-8" src="/static/jon-butterworth-pxhKYRe_SSw-unsplash.jpg">
+                
+                <div class ="profile-links mb-3 mt-3">
+                    <a href="/favorites">Favorites</a>
+                </div>
+                <div class ="profile-links mb-3">
+                    <a href="/locations">Locations</a>
+                </div>
+
+            </div>
         </div>
-        <div class="col-md-5 border-right">
-            <div class="p-3 py-5">
+        <div class="col-md-9 border-right mb-1 border-right"> 
+            <div class="">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Profile Settings</h4>
+                    <h4 id="profile-settings"class="text-right">Profile Settings</h4>
                 </div>
                 <div class="row mt-2">
                     <div class="col-md-6"><label class="labels">First Name</label><input name="first_name" type="text" class="form-control" placeholder="first name" value="{{user.first_name if user.first_name}}"></div>
@@ -25,22 +35,13 @@
                 </div> 
                 <div class="row mt-3">
                     <div class="col-md-12"><label class="labels">Website</label><input name="website" type="text" class="form-control" placeholder="website" value="{{user.contacts.website if user.contacts.website}}" /></div>
-                    <div class="col-md-6"><label class="labels">Social Media link</label><input name = "social_media_link" type="text" class="form-control"  placeholder="social media" value="{{user.contacts.social_media_link if user.contacts.social_media_link}}" /></div>
+                    <div class="col-md-12"><label class="labels">Social Media link</label><input name = "social_media_link" type="text" class="form-control"  placeholder="social media" value="{{user.contacts.social_media_link if user.contacts.social_media_link}}" /></div>
                 </div>
             </div>
         </div>
-    <div class="col-md-4">
-        <div class="p-3 py-5">
-        </div>
-        
+    </div>
 </form>
-<p>
-    <a href="/favorites">View your list of favorites</a>
-  </p>
 
 
-<p>
-    <a href="/locations">Return to Locations</a>
-  </p>
-  
+
 {% endblock %}

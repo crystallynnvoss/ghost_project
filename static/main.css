@@ -1,6 +1,237 @@
-body {
-    background: rgba(99, 39, 120, 0.25)
+@font-face {
+    font-family: 'valium';
+    src: url('/static/valium-webfont.woff2') format('woff2'),
+         url('/static/valium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
 }
+h1,h2,h3,h4,h5,h6 {
+    font-family:"valium";
+}
+
+body {
+
+    
+    font-family:sans-serif!important;
+    color:white;
+
+    background: #3E3D42;
+}
+.hemley div a {
+    width:130px;
+}
+
+.add_favorites {
+    position:relative;
+    //top:4px;
+    //right: 100px;
+}
+.story textarea {
+    width:100%;
+    height:150px;
+}
+
+.story {
+
+    width:500px;
+}
+.add_favorites button{
+    border:none
+}
+
+ul li {
+    list-style-type:none;
+}
+.favorites a, #locations a {
+    background:transparent;
+}
+
+a {
+    font-size: large;
+    color: ghostwhite;
+    background: #c49358fa;
+    border-bottom: 1cm;
+    border-color: #1C1B20;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 4px;
+    display: block;
+   
+}
+
+.name {
+    font-family:"valium";
+    font-size: xx-large;
+    color: #1C1B20;
+    text-align: center;
+    padding-top: 170px;
+    margin-bottom: 10px;
+}
+#name {
+    font-family:"valium";
+    font-size: xx-large;
+    color: #1C1B20;
+    text-align: center;
+    padding-top: 5px;
+    margin-bottom: 10px;
+}
+ul#locations {
+    padding-left:0;
+}
+
+#locations-list {
+    font-size: large;
+    color: ghostwhite;
+    border-bottom: 1cm;
+    background: #1C1B20;
+}
+
+.btn-primary {
+    color: ghostwhite;
+    background-color: #c49358fa;
+    border-color: #1C1B20;
+}
+
+.brown {
+    color: #594021;
+}
+.lightbrown {
+    color: #674E30;
+}
+.nickel {  
+    color: #878579; 
+}
+.slate {
+    color:#3E3D42;
+}
+.verydarkbrown {
+    color:#1C1B20;
+}
+#homepagebackground {
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-image: url(rythik-bxkyazW_6KY-unsplash.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 955 px;
+    background-repeat: no-repeat;
+    background-position: center center; 
+    z-index:-1;
+    top:0px;
+    left:0;
+    
+}
+
+#locationsbackground {
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-image: url(daniel-jensen-NMk1Vggt2hg-unsplash.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    min-height: 100%;
+    background-size: cover;
+    background-repeat: repeat-y;
+    background-position: center center;
+    z-index:-1;
+    top:0px;
+    left:0;
+    margin-bottom:0px;
+}
+
+#favoritesbackground {
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-image: url(spencer-tamichi-bjH4uE6iuEo-unsplash.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    min-height: 100%;
+    background-size: cover;
+    background-repeat: repeat-y;
+    background-position: center;
+    z-index:-1;
+    top:0px;
+    left:0;
+    margin-bottom:0px;
+}
+
+.nav {
+    list-style-type: none;
+    font-weight: normal;
+    margin: 0;
+    padding: 0px;
+    width: 660px;
+
+    margin: auto;
+    text-align: center;
+}
+.nav ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+.nav li{
+    width:155px;
+    display:inline-block;
+    text-align:center;
+    margin-right:10px;
+    
+}
+
+.absolutist {
+    position: absolute;
+    top: 100px;
+    width:100%;
+    left:0;
+}
+
+.nav-link {
+    font-family: "valium";
+    display: block;
+    color: #c49358fa;
+    border: 1px solid ghostwhite;
+    font-weight: bold;
+    background-color: rgba(0,0,0,0.5);
+    text-align: center;
+    height: 40px;
+    border-radius:5px;
+    box-shadow:0px 0px 60px rgba(255,255,255, 0.5);
+    
+    
+}
+
+.profile-links {
+    font-family:"valium";
+    display: block;
+    color: #c49358fa;
+    border: 1px solid ghostwhite;
+    font-weight:bold;
+    background-color:#c49358fa; 
+    text-align: center;
+  
+}
+
+#profile-settings {
+    color: #c49358fa;
+}
+.p-3-py5 {
+    display: block;
+    color: #c49358fa;
+    border: 1px solid ghostwhite;
+    font-weight:bold;
+    text-align: center;   
+}
+.nav li.list-item:hover {
+    font-weight:bold
+  }
+ 
+
 
 .labels {
 
@@ -9,26 +240,26 @@ body {
 
 .form-control:focus {
     box-shadow: none;
-    border-color: #BA68C8
+    border-color: #878579; 
 }
 
 .profile-button {
-    background: rgb(99, 39, 120);
+    background: #1C1B20;
     box-shadow: none;
     border: none
 }
 
 .profile-button:hover {
-    background: #682773
+    background: #1C1B20;
 }
 
 .profile-button:focus {
-    background: #682773;
+    background: #1C1B20;
     box-shadow: none
 }
 
 .profile-button:active {
-    background: #682773;
+    background: #1C1B20;
     box-shadow: none
 }
 

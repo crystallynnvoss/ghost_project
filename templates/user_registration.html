@@ -3,13 +3,9 @@
 
 {% block body %}
 {% block heading %}<h1>Ghost Hunter Registration Page</h1>{% endblock%}
-<form class="container rounded bg-white mt-5 mb-5" action="/registration" method="POST">
-    <div class="row">
-        <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Ghost Hunter</span><span class="text-black-50"></span><span> </span></div>
-        </div>
-        <div class="col-md-5 border-right">
-            <div class="p-3 py-5">
+<form class="rounded mt-5 mb-5 ml-0" action="/registration" method="POST">
+        <div class="col-md-12 border-right">
+            <div class="">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right">Profile Settings</h4>
                 </div>
@@ -26,15 +22,12 @@
                 </div> 
                 <div class="row mt-3">
                     <div class="col-md-12"><label class="labels">Website</label><input name="website" type="text" class="form-control" placeholder="website" value="{{user.contacts.website if user.contacts.website}}"></div>
-                    <div class="col-md-6"><label class="labels">Social Media link</label><input name = "social_media_link" type="text" class="form-control" value="" placeholder="social media" value="{{user.contacts.social_media_link if user.contacts.social_media_link}}"></div>
+                    <div class="col-md-12"><label class="labels">Social Media link</label><input name = "social_media_link" type="text" class="form-control" value="" placeholder="social media" value="{{user.contacts.social_media_link if user.contacts.social_media_link}}"></div>
                 </div>
             </div>
         </div>
-    <div class="col-md-4">
-        <div class="p-3 py-5">
-        </div>
-    <div class="mt-5 text-center"><input class="btn btn-primary profile-button" type="submit" value="Save Profile" /></div>
-    </div>
+    <div class="mt-5 text-center"><input class="btn btn-primary" type="submit" value="Save Profile" /></div>
+</div>
 </form>
 
 {% endblock %}

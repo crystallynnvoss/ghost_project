@@ -10,37 +10,39 @@
         {% endfor %}
       {% endif %}
     {% endwith %}
-  
-<h1>{{ location.name }}</h1> <span>
+<div >  
+<h1 class="text-center mt-1 col-md-9">{{ location.name }}</h1> 
+<span class="add_favorites">
   {% if user %}
   <form action="/favorites">
     
     <input type="hidden" name="favorite" value="{{ location.id }}"/>
-    <button>Add to Favorites</button>
+    <button class="btn-primary btn mb-3">Add to Favorites</button>
   </form>
   {% endif %}
 </span>
 <p>
-  {{ location.city }} {{ location.state }}
+  {{ location.city }}, {{ location.state }}
 </p>
 
 <p>
   {{ location.description }}
 </p>
-<h4>Comments</h4>
-<form class="" action="/comment_submit" method="POST">
-  <textarea placeholder="add comment here" name="user_comments"></textarea>
-  <input type="hidden" name="id" value="{{location.id}}"/> <!-- in order to get information to server without being seen by user use hidden-->
-  <button>Submit</button>
+<p>Did You Dare Investigate Here?</p>
+<form class="story" action="/comment_submit" method="POST">
+  <textarea placeholder="Tell your Ghost Story" name="user_comments"></textarea> <br />
+  <input type="hidden" name="id" value="{{location.id}}"/><span><button class="btn btn-primary mb-3">Submit</button></span> <!-- in order to get information to server without being seen by user use hidden-->
 </form>
 
-<div id="comments">
+<div id="comments" class="mb-3">
   {% for comment in location.comments %} 
     {{comment.user_comments}} by {{comment.users.email}}
   {% endfor %} 
 </div>
-<img src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/{{location.longitude}},{{location.latitude}},10/400x400?access_token=pk.eyJ1IjoiZmlzaGVyMzQ3NCIsImEiOiJjbDFkcmQxNXMwazhpM21wNnNieTg4NWVqIn0.dmCThKx2-AVbtgD0bu3Pfw" />
+<img class="mb-3" src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s-l+000({{location.longitude}},{{location.latitude}})/{{location.longitude}},{{location.latitude}},10/400x400?access_token=pk.eyJ1IjoiZmlzaGVyMzQ3NCIsImEiOiJjbDFkcmQxNXMwazhpM21wNnNieTg4NWVqIn0.dmCThKx2-AVbtgD0bu3Pfw" />
+</div>
 
+<a class="btn btn-primary mb-3" href="/locations">Locations</a>
 
 
 {% endblock %}
